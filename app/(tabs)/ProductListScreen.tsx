@@ -16,28 +16,36 @@ import {
 type Product = {
   id: string;
   name: string;
+  name2: string;
   price: string;
   image: any;
+  maker: string;
 };
 
 export const products: Product[] = [
   {
     id: "1",
-    name: "Replica Eero Aarnio Ball Chair",
+    name: "Replica Eero",
+    name2: "Aarnio Ball Chair",
     price: "€800.26",
     image: require("@/assets/images/chair1.png"),
+    maker: "shina",
   },
   {
     id: "2",
-    name: "Morden Setting Chair",
+    name: "Morden Setting",
+    name2: "Chair",
     price: "€760.26",
     image: require("@/assets/images/welcomechair.png"),
+    maker: "shina",
   },
   {
     id: "3",
     name: "Ksenia Chair",
+    name2: " ",
     price: "€400.22",
     image: require("@/assets/images/chair2.png"),
+    maker: "shina",
   },
 ];
 
@@ -63,10 +71,12 @@ const App = () => {
               />
             </View>
             <View style={styles.searchContainer}>
+              <Ionicons name={"search"} color={"black"} size={23}  style={styles.searchIcon} />
               <TextInput
                 style={styles.searchInput}
                 placeholder="Search for furniture"
               />
+              <Ionicons name={"filter"} color={"black"} size={23}  style={styles.searchIcon} />
             </View>
 
             <ScrollView horizontal={true} style={styles.categoryMenu}>
@@ -85,9 +95,15 @@ const App = () => {
             style={styles.productContainer}
             onPress={onPressDetails}
           >
-            <Image source={item.image} style={styles.productImage} />
-            <Text style={styles.productName}>{item.name}</Text>
-            <Text style={styles.productPrice}>{item.price}</Text>
+            <View style={styles.imageContainer}>
+              <Image source={item.image} style={styles.productImage} />
+              <Ionicons name={"heart"} color={"white"} size={23} style={styles.like} />
+              <Ionicons name={"bag"} color={"white"} size={23} style={styles.cart} />
+              <Text style={styles.productName}>{item.name}</Text>
+              <Text style={styles.productName2}>{item.name2}</Text>
+              <Text style={styles.maker}>by {item.maker}</Text>
+              <Text style={styles.productPrice}>{item.price}</Text>
+            </View>
           </TouchableOpacity>
         )}
       />
@@ -106,7 +122,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   greeting: {
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: "bold",
   },
   profileImage: {
@@ -115,20 +131,21 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   searchContainer: {
-    paddingHorizontal: 16,
-    paddingBottom: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f1f1f1', // Adjust the background color
+    borderRadius: 25, // Rounded corners
+    paddingHorizontal: 15, 
+    paddingVertical: 10, 
+    marginVertical: 10,
   },
+  searchIcon: {
+    marginRight: 10,
+  },
+
   searchInput: {
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    padding: 8,
-    paddingLeft: 16,
+    flex: 1,
     fontSize: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 1,
-    elevation: 2,
   },
   categoryMenu: {
     flexDirection: "row",
@@ -138,7 +155,6 @@ const styles = StyleSheet.create({
   categoryItem: {
     marginRight: 16,
     paddingVertical: 8,
-    backgroundColor: '#007BFF',
     padding: 10,
   },
   categoryText: {
@@ -146,22 +162,74 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   productContainer: {
-    marginBottom: 20,
-    padding: 20,
     borderRadius: 10,
+  },
+  imageContainer: {
+    position: 'relative',
   },
   productImage: {
     width: "100%",
-    height: 150 ,
+    height: 250 ,
     marginBottom: 10,
+    borderRadius: 30,
   },
   productName: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: "bold",
+    position: 'absolute',
+    color: 'black', // Adjust color as needed
+    top: '40%', // Adjust vertical positioning
+    left: '5%', // Adjust horizontal positioning
+    transform: "[{ translateX: -50% }, { translateY: -50% }]", // Center the text
+  },
+  productName2: {
+    fontSize: 22,
+    fontWeight: "bold",
+    position: 'absolute',
+    color: 'black', // Adjust color as needed
+    top: '50%', // Adjust vertical positioning
+    left: '5%', // Adjust horizontal positioning
+    transform: "[{ translateX: -50% }, { translateY: -50% }]", // Center the text
+  },
+  maker: {
+    fontSize: 16,
+    position: 'absolute',
+    color: 'black', // Adjust color as needed
+    top: '60%', // Adjust vertical positioning
+    left: '5%', // Adjust horizontal positioning
+    transform: "[{ translateX: -50% }, { translateY: -50% }]", // Center the text
   },
   productPrice: {
     fontSize: 16,
-    color: "#888",
+    color: "white",
+    position: 'absolute',
+    top: '75%', // Adjust vertical positioning
+    left: '5%', // Adjust horizontal positioning
+    transform: "[{ translateX: -50% }, { translateY: -50% }]", // Center the text
+    backgroundColor: 'black',
+    paddingVertical: 5, // Adjust vertical padding
+    paddingHorizontal: 15, // Adjust horizontal padding
+    borderRadius: 20,
+  },
+  like: {
+    position: 'absolute',
+    top: '10%', // Adjust vertical positioning
+    left: '85%', // Adjust horizontal positioning
+    transform: "[{ translateX: -50% }, { translateY: -50% }]", // Center the text
+    backgroundColor: 'rgba(44, 40, 40, 0.22)',
+    borderRadius: 40,
+    paddingVertical: 10, // Adjust vertical padding
+    paddingHorizontal: 10, // Adjust horizontal padding
+  },
+  cart: {
+    position: 'absolute',
+    top: '75%', // Adjust vertical positioning
+    left: '85%', // Adjust horizontal positioning
+    transform: "[{ translateX: -50% }, { translateY: -50% }]", // Center the text
+    backgroundColor: 'rgba(44, 40, 40, 0.22)',
+    borderRadius: 40,
+    paddingVertical: 10, // Adjust vertical padding
+    paddingHorizontal: 10, // Adjust horizontal padding
   },
 });
 

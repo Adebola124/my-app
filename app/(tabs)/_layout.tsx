@@ -39,7 +39,7 @@ export default function TabLayout() {
         options={{
           title: '',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'cart' : 'cart-outline'} color={color} />
+            <TabBarIcon name={focused ? 'bag' : 'bag-outline'} color={color} />
           ),
         }}
       />
