@@ -143,12 +143,10 @@ const styles = StyleSheet.create({
   },
   categoryText: {
     fontSize: 16,
-    color: '#fff',
     textAlign: 'center',
   },
   productContainer: {
     marginBottom: 20,
-    backgroundColor: "#f9f9f9",
     padding: 20,
     borderRadius: 10,
   },

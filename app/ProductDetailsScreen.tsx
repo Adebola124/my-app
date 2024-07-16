@@ -71,22 +71,12 @@ const ProductListScreen = () => {
                   </ThemedView>
                 )}
               />
-              <Slider
-                onEndReached={() => {
-                  router.navigate('./(tabs)/ProductListScreen');
-                } }
-                containerStyle={Styles.sliderStyles}
-                sliderElement={
-                  <Ionicons name={"bag"} color={"black"} size={44} />
-                }
-                >
-                <Text style={Styles.slide}>{'Add to cart'}</Text>
-              </Slider>
             </View>
           </ParallaxScrollView>
         </>
       )}
     />
+    
   );
 };
 
