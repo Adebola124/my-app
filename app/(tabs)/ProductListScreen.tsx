@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import {
   SafeAreaView,
@@ -54,6 +54,12 @@ const App = () => {
     router.navigate("/ProductDetailsScreen");
   };
 
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
+
   return (
       <FlatList  style={styles.container}
         data={products}
@@ -97,7 +103,7 @@ const App = () => {
           >
             <View style={styles.imageContainer}>
               <Image source={item.image} style={styles.productImage} />
-              <Ionicons name={"heart"} color={"white"} size={23} style={styles.like} />
+              <Ionicons name={"heart"} color={isFavorite ? 'red' : 'white'} size={23} style={styles.like} onPress={toggleFavorite} />
               <Ionicons name={"bag"} color={"white"} size={23} style={styles.cart} />
               <Text style={styles.productName}>{item.name}</Text>
               <Text style={styles.productName2}>{item.name2}</Text>
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#fff",
+    backgroundColor: "#f0e7db",
   },
   header: {
     flexDirection: "row",

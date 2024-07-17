@@ -28,8 +28,7 @@ export const Styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '75%',
-        position: 'absolute',
-        bottom: 40,
+        bottom: 0,
         left: 30,
     },
     PDSsliderIcon: {
@@ -37,11 +36,11 @@ export const Styles = StyleSheet.create({
         margin: 4,
         borderRadius: 30,
         height: 50,
-        backgroundColor: 'white',
+        backgroundColor: 'black',
     },
     PDScontainer: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#f0e7db',
     },
     PDSimgLogo: {
         height: '100%',
@@ -91,6 +90,16 @@ export const Styles = StyleSheet.create({
         paddingHorizontal: 15, // Adjust horizontal padding
         top: '3%', // Adjust vertical positioning
         left: '85%', // Adjust horizontal positioning
+        transform: "[{ translateX: -50% }, { translateY: -50% }]", // Center the text
+    },
+    PDSback: {
+        position: 'absolute',
+        backgroundColor: 'rgba(44, 40, 40, 0.22)',
+        borderRadius: 40,
+        paddingVertical: 15, // Adjust vertical padding
+        paddingHorizontal: 15, // Adjust horizontal padding
+        top: '3%', // Adjust vertical positioning
+        left: '5%', // Adjust horizontal positioning
         transform: "[{ translateX: -50% }, { translateY: -50% }]", // Center the text
     },
     stepContainer: {
